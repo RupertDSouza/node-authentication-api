@@ -1,3 +1,4 @@
+````markdown
 # Authentication API
 
 This project is focused on implementing authentication APIs using Node.js, Express, and Passport.js for user registration, login, token management, and profile retrieval.
@@ -9,6 +10,7 @@ To install the required dependencies, use npm:
 ```bash
 npm install
 ```
+````
 
 ## Configuration
 
@@ -26,6 +28,10 @@ REFRESH_TOKEN_SECRET="refresh_token_secret_here"
 - **Logout API**: Deletes the token from the database, effectively logging the user out.
 - **Refresh API**: Regenerates the access token using the refresh token.
 - **Get Profile API**: Retrieves the user's profile, authenticated using the access token generated from the login API.
+
+## API Documentation
+
+Refer to the [API documentation](https://documenter.getpostman.com/view/31476908/2sA3JNcLr5) for detailed usage instructions and examples.
 
 ## Dependencies
 
@@ -52,5 +58,3 @@ npm start
 ```
 
 This will start the server and automatically restart it when changes are made to the source files.
-
-Feel free to adjust the APIs and configurations as needed for your project.
