@@ -1,15 +1,13 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/User", {
-  userNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-const db = mongoose.connection;
+mongoose
+  .connect("mongodb://localhost:27017/User", {})
 
-db.on("error", (err) => {
-  console.log(err);
-});
+  .then(() => {
+    console.log("MongoDB Connection successful");
+  })
+  .catch((error) => {
+    console.error("Connection Error", error);
+  });
 
-db.open("open", () => {
-  console.log("Connection Established");
-});
+module.exports = mongoose;

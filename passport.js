@@ -2,14 +2,20 @@ const passport = require("passport");
 const BearerStrategy = require("passport-http-bearer").Strategy;
 const jwt = require("jsonwebtoken");
 
+const User = require("./models/user");
+
 passport.use(
-  new BearerStrategy(function (token, done) {
-    // Validate the token here, fetch user from DB
-    // For simplicity, we'll use jwt.verify
-    jwt.verify(token, "secret", function (err, user) {
-      if (err) return done(err);
+  new BearerStrategy(async (token, done) => {
+    try {
+      const decoded = jwt.verify(token, "secret_key");
+      const user = await User.findById(decoded.userId);
+      if (!user) {
+        return done(null, false);
+      }
       return done(null, user);
-    });
+    } catch (error) {
+      return done(error);
+    }
   })
 );
 
